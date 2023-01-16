@@ -28,7 +28,7 @@ jq_file="${ssr_folder}/jq"
 
 Green_font_prefix="\033[32m" && Red_font_prefix="\033[31m" && Green_background_prefix="\033[42;37m" && Red_background_prefix="\033[41;37m" && Font_color_suffix="\033[0m"
 Info="${Green_font_prefix}[information]${Font_color_suffix}"
-Error="${Red_font_prefix}[mistake]${Font_color_suffix}"
+Error="${Red_font_prefix}[Error]${Font_color_suffix}"
 Tip="${Green_font_prefix}[Notice]${Font_color_suffix}"
 Separator_1="——————————————————————————————"
 
@@ -1638,7 +1638,7 @@ Other_functions(){
   ${Green_font_prefix}5.${Font_color_suffix} 一键解封 BT/PT/SPAM (iptables)
 ————————————
   ${Green_font_prefix}6.${Font_color_suffix} 切换 ShadowsocksR日志输出模式
-  —— 说明：SSR默认只输出mistake日志，此项可切换为输出详细的访问日志。
+  —— 说明：SSR默认只输出Error日志，此项可切换为输出详细的访问日志。
   ${Green_font_prefix}7.${Font_color_suffix} 监控 ShadowsocksR服务端运行状态
   —— 说明：该功能适合于SSR服务端经常进程结束，启动该功能后会每分钟检测一次，当进程不存在则自动启动SSR服务端。" && echo
 	read -e -p "(默认: 取消):" other_num
@@ -1676,8 +1676,8 @@ Set_config_connect_verbose_info(){
 	[[ ! -e ${jq_file} ]] && echo -e "${Error} JQ解析器 不存在，请检查 !" && exit 1
 	connect_verbose_info=`${jq_file} '.connect_verbose_info' ${config_user_file}`
 	if [[ ${connect_verbose_info} = "0" ]]; then
-		echo && echo -e "当前日志模式: ${Green_font_prefix}简单模式（只输出mistake日志）${Font_color_suffix}" && echo
-		echo -e "确定要切换为 ${Green_font_prefix}详细模式（输出详细连接日志+mistake日志）${Font_color_suffix}？[y/N]"
+		echo && echo -e "当前日志模式: ${Green_font_prefix}简单模式（只输出Error日志）${Font_color_suffix}" && echo
+		echo -e "确定要切换为 ${Green_font_prefix}详细模式（输出详细连接日志+Error日志）${Font_color_suffix}？[y/N]"
 		read -e -p "(默认: n):" connect_verbose_info_ny
 		[[ -z "${connect_verbose_info_ny}" ]] && connect_verbose_info_ny="n"
 		if [[ ${connect_verbose_info_ny} == [Yy] ]]; then
@@ -1688,8 +1688,8 @@ Set_config_connect_verbose_info(){
 			echo && echo "	已取消..." && echo
 		fi
 	else
-		echo && echo -e "当前日志模式: ${Green_font_prefix}详细模式（输出详细连接日志+mistake日志）${Font_color_suffix}" && echo
-		echo -e "确定要切换为 ${Green_font_prefix}简单模式（只输出mistake日志）${Font_color_suffix}？[y/N]"
+		echo && echo -e "当前日志模式: ${Green_font_prefix}详细模式（输出详细连接日志+Error日志）${Font_color_suffix}" && echo
+		echo -e "确定要切换为 ${Green_font_prefix}简单模式（只输出Error日志）${Font_color_suffix}？[y/N]"
 		read -e -p "(默认: n):" connect_verbose_info_ny
 		[[ -z "${connect_verbose_info_ny}" ]] && connect_verbose_info_ny="n"
 		if [[ ${connect_verbose_info_ny} == [Yy] ]]; then
