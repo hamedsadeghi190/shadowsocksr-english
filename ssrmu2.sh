@@ -1784,9 +1784,9 @@ menu_status(){
 	if [[ -e ${ssr_folder} ]]; then
 		check_pid
 		if [[ ! -z "${PID}" ]]; then
-			echo -e " current status: ${Green_font_prefix}Installed${Font_color_suffix} 并 ${Green_font_prefix}activated${Font_color_suffix}"
+			echo -e " current status: ${Green_font_prefix}Installed${Font_color_suffix} and ${Green_font_prefix}activated${Font_color_suffix}"
 		else
-			echo -e " current status: ${Green_font_prefix}Installed${Font_color_suffix} 但 ${Red_font_prefix}have not started${Font_color_suffix}"
+			echo -e " current status: ${Green_font_prefix}Installed${Font_color_suffix} but ${Red_font_prefix}have not started${Font_color_suffix}"
 		fi
 		cd "${ssr_folder}"
 	else
